@@ -1,4 +1,6 @@
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+// With the Vite proxy configured, use '' (relative) so /api/* is proxied to :3000 in dev.
+// In production, set VITE_API_BASE_URL to the deployed backend URL.
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 
 export const FLIGHT_CLASSES = [
     { value: 'economy', label: 'Economy' },

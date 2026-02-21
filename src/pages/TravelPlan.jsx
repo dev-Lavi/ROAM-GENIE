@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import PageWrapper from '../components/layout/PageWrapper';
 import TravelForm from '../components/travel/TravelForm';
 import FlightCard from '../components/travel/FlightCard';
@@ -8,7 +9,7 @@ import Card from '../components/common/Card';
 import Loader from '../components/common/Loader';
 import { generateTravelPlan } from '../api/itineraryApi';
 import { getCity } from '../utils/iataMap';
-import { Plane, Hotel, Map, AlertCircle, ChevronRight, Sparkles, Globe } from 'lucide-react';
+import { Plane, Hotel, Map, AlertCircle, ChevronRight, Sparkles, Globe, ShieldCheck, ShieldX, ShieldQuestion } from 'lucide-react';
 
 /* ─── Section Header ─────────────────────── */
 const SectionHeader = ({ icon, title, subtitle, color = '#6366f1', count }) => (
@@ -146,6 +147,9 @@ const TravelPlan = () => {
     const hotels = plan?.hotels || [];
     const restaurants = plan?.restaurants || [];
     const itinerary = plan?.itinerary || plan?.itinerary_text || null;
+    const hotelAIText = plan?.hotelRestaurantResults || '';
+    const visaStatus = plan?.visaStatus || null;
+    const destCountry = plan?.destinationCountry || '';
 
     const srcCity = formData ? getCity(formData.source) : '';
     const dstCity = formData ? getCity(formData.destination) : '';
@@ -234,7 +238,7 @@ const TravelPlan = () => {
                             background: 'linear-gradient(135deg,rgba(99,102,241,0.18),rgba(139,92,246,0.12))',
                             border: '1.5px solid rgba(99,102,241,0.3)',
                             display: 'flex', alignItems: 'center', gap: '12px',
-                            flexWrap: 'wrap', marginBottom: '48px',
+                            flexWrap: 'wrap', marginBottom: '24px',
                             animation: 'fadeInUp 0.4s ease',
                         }}>
                             <Plane size={20} style={{ color: '#818cf8', flexShrink: 0 }} />
@@ -251,6 +255,39 @@ const TravelPlan = () => {
                                 ✓ Plan Ready
                             </span>
                         </div>
+
+                        {/* Visa Status Banner */}
+                        {visaStatus && (
+                            <div style={{
+                                padding: '14px 22px', borderRadius: '14px', marginBottom: '40px',
+                                display: 'flex', alignItems: 'center', gap: '12px',
+                                animation: 'fadeInUp 0.4s ease 0.1s both',
+                                ...(visaStatus === 'Visa-Free'
+                                    ? { background: 'rgba(34,197,94,0.08)', border: '1.5px solid rgba(34,197,94,0.3)' }
+                                    : visaStatus === 'Visa Required'
+                                        ? { background: 'rgba(245,158,11,0.08)', border: '1.5px solid rgba(245,158,11,0.3)' }
+                                        : { background: 'rgba(99,102,241,0.08)', border: '1.5px solid rgba(99,102,241,0.3)' }
+                                ),
+                            }}>
+                                {visaStatus === 'Visa-Free'
+                                    ? <ShieldCheck size={20} style={{ color: '#22c55e', flexShrink: 0 }} />
+                                    : visaStatus === 'Visa Required'
+                                        ? <ShieldX size={20} style={{ color: '#f59e0b', flexShrink: 0 }} />
+                                        : <ShieldQuestion size={20} style={{ color: '#818cf8', flexShrink: 0 }} />
+                                }
+                                <p style={{
+                                    margin: 0, fontSize: '0.9rem', fontWeight: 600,
+                                    color: visaStatus === 'Visa-Free' ? '#86efac' : visaStatus === 'Visa Required' ? '#fcd34d' : '#a5b4fc'
+                                }}>
+                                    {visaStatus === 'Visa-Free'
+                                        ? `Great news! Visa-free travel to ${destCountry} ✈️`
+                                        : visaStatus === 'Visa Required'
+                                            ? `Visa required for ${destCountry} — please check requirements before travel.`
+                                            : `Visa status for ${destCountry}: ${visaStatus}`
+                                    }
+                                </p>
+                            </div>
+                        )}
 
                         {/* Flights */}
                         {flights.length > 0 && (
@@ -270,7 +307,7 @@ const TravelPlan = () => {
                             </div>
                         )}
 
-                        {/* Hotels & Restaurants */}
+                        {/* Hotels & Restaurants — structured cards (if backend returns arrays) */}
                         {(hotels.length > 0 || restaurants.length > 0) && (
                             <div style={{ marginBottom: '56px' }}>
                                 <SectionHeader
@@ -281,6 +318,35 @@ const TravelPlan = () => {
                                     count={hotels.length}
                                 />
                                 <HotelView hotels={hotels} restaurants={restaurants} />
+                            </div>
+                        )}
+
+                        {/* Hotels & Restaurants — AI text block (from backend Gemini response) */}
+                        {!hotels.length && !restaurants.length && hotelAIText && (
+                            <div style={{ marginBottom: '56px' }}>
+                                <SectionHeader
+                                    icon={<Hotel size={20} style={{ color: '#14b8a6' }} />}
+                                    title="Stays & Dining"
+                                    subtitle="AI-curated hotels and restaurants"
+                                    color="#14b8a6"
+                                />
+                                <div style={{
+                                    background: 'rgba(17,17,34,0.7)',
+                                    border: '1px solid rgba(20,184,166,0.18)',
+                                    borderRadius: '20px', padding: '28px',
+                                    color: '#cbd5e1', lineHeight: 1.8, fontSize: '0.95rem',
+                                }}>
+                                    <style>{`
+                                        .hotel-md h1,.hotel-md h2,.hotel-md h3{color:#2dd4bf;font-family:'Space Grotesk',sans-serif;margin:1.1em 0 0.5em;}
+                                        .hotel-md p{margin:0.5em 0;}
+                                        .hotel-md ul{padding-left:1.4em;}
+                                        .hotel-md li{margin:0.3em 0;}
+                                        .hotel-md strong{color:#e2e8f0;}
+                                    `}</style>
+                                    <div className="hotel-md">
+                                        <ReactMarkdown>{hotelAIText}</ReactMarkdown>
+                                    </div>
+                                </div>
                             </div>
                         )}
 
