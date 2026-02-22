@@ -19,33 +19,30 @@ const Card = ({
             className={className}
             onClick={onClick}
             style={{
-                background: 'rgba(17,17,34,0.75)',
+                background: 'var(--clr-card-bg)',
                 backdropFilter: 'blur(16px)',
                 WebkitBackdropFilter: 'blur(16px)',
-                border: '1px solid rgba(99,102,241,0.18)',
+                border: '1px solid var(--clr-card-border)',
                 borderRadius: '20px',
                 padding,
-                boxShadow: glow
-                    ? '0 0 40px rgba(99,102,241,0.15), 0 4px 24px rgba(0,0,0,0.4)'
-                    : '0 4px 24px rgba(0,0,0,0.35)',
+                boxShadow: glow ? 'var(--clr-card-glow)' : 'var(--clr-card-shadow)',
+                transition: 'background 0.35s ease, border-color 0.35s ease, transform 0.25s ease, box-shadow 0.25s ease',
                 ...hoverStyle,
                 ...style,
             }}
             onMouseEnter={e => {
                 if (!hover) return;
                 e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.borderColor = 'rgba(129,140,248,0.35)';
+                e.currentTarget.style.borderColor = 'var(--clr-border-lt)';
                 e.currentTarget.style.boxShadow = glow
-                    ? '0 0 60px rgba(99,102,241,0.25), 0 12px 40px rgba(0,0,0,0.5)'
-                    : '0 12px 40px rgba(0,0,0,0.5)';
+                    ? '0 0 60px rgba(99,102,241,0.22), 0 12px 40px rgba(0,0,0,0.35)'
+                    : '0 12px 40px rgba(0,0,0,0.3)';
             }}
             onMouseLeave={e => {
                 if (!hover) return;
                 e.currentTarget.style.transform = '';
-                e.currentTarget.style.borderColor = 'rgba(99,102,241,0.18)';
-                e.currentTarget.style.boxShadow = glow
-                    ? '0 0 40px rgba(99,102,241,0.15), 0 4px 24px rgba(0,0,0,0.4)'
-                    : '0 4px 24px rgba(0,0,0,0.35)';
+                e.currentTarget.style.borderColor = 'var(--clr-card-border)';
+                e.currentTarget.style.boxShadow = glow ? 'var(--clr-card-glow)' : 'var(--clr-card-shadow)';
             }}
         >
             {children}

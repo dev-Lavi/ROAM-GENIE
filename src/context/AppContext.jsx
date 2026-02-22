@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 
 const AppContext = createContext(null);
 
@@ -9,6 +9,28 @@ export const AppProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [notification, setNotification] = useState(null);
 
+    // ── Theme ──────────────────────────────────────────────────────────────────
+    const [theme, setTheme] = useState(() => {
+        // Restore from localStorage or default to dark
+        return localStorage.getItem('rg-theme') || 'dark';
+    });
+
+    // Apply / remove the 'light' class on <html> whenever theme changes
+    useEffect(() => {
+        const html = document.documentElement;
+        if (theme === 'light') {
+            html.classList.add('light');
+        } else {
+            html.classList.remove('light');
+        }
+        localStorage.setItem('rg-theme', theme);
+    }, [theme]);
+
+    const toggleTheme = useCallback(() => {
+        setTheme(t => (t === 'dark' ? 'light' : 'dark'));
+    }, []);
+
+    // ── Notifications ─────────────────────────────────────────────────────────
     const showNotification = useCallback((message, type = 'info') => {
         setNotification({ message, type });
         setTimeout(() => setNotification(null), 4000);
@@ -23,6 +45,7 @@ export const AppProvider = ({ children }) => {
             loading, setLoading,
             error, setError, clearError,
             notification, showNotification,
+            theme, toggleTheme,
         }}>
             {children}
         </AppContext.Provider>

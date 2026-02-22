@@ -36,7 +36,7 @@ const Loader = ({ size = 'md', text = '', fullScreen = false }) => {
             </div>
             {text && (
                 <p style={{
-                    color: '#94a3b8', fontSize: '0.9rem', fontWeight: 500,
+                    color: 'var(--clr-text-muted)', fontSize: '0.9rem', fontWeight: 500,
                     letterSpacing: '0.03em', margin: 0,
                 }}>
                     {text}

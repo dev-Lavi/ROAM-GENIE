@@ -7,6 +7,8 @@ import TravelPlan from './pages/TravelPlan';
 import Passport from './pages/Passport';
 import IVR from './pages/IVR';
 import Contact from './pages/Contact';
+import TripScanner from './pages/TripScanner';
+import WarRoom from './pages/WarRoom';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<TravelPlan />} />
+            <Route path="/scanner" element={<TripScanner />} />
+            <Route path="/warroom" element={<WarRoom />} />
             <Route path="/passport" element={<Passport />} />
             <Route path="/ivr" element={<IVR />} />
             <Route path="/contact" element={<Contact />} />

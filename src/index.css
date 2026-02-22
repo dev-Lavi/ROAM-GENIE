@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
-/* ── Design Tokens ────────────────────────────────────────────────── */
+/* ── Design Tokens — DARK (default) ──────────────────────────────── */
 :root {
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
   --font-display: 'Space Grotesk', system-ui, sans-serif;
 
   /* Brand */
@@ -25,15 +25,97 @@
   --clr-text-muted: #94a3b8;
   --clr-text-dim:   #64748b;
 
+  /* Card */
+  --clr-card-bg:      rgba(17,17,34,0.75);
+  --clr-card-border:  rgba(99,102,241,0.18);
+  --clr-card-shadow:  0 4px 24px rgba(0,0,0,0.35);
+  --clr-card-glow:    0 0 40px rgba(99,102,241,0.15), 0 4px 24px rgba(0,0,0,0.4);
+
+  /* Nav */
+  --clr-nav-bg:       rgba(10,10,20,0.92);
+  --clr-nav-border:   rgba(99,102,241,0.2);
+
+  /* Footer */
+  --clr-footer-bg:    rgba(10,10,20,0.95);
+  --clr-footer-border:rgba(99,102,241,0.15);
+
+  /* Animated bg orbs */
+  --orb-1: rgba(99,102,241,0.12);
+  --orb-2: rgba(139,92,246,0.10);
+  --orb-3: rgba(20,184,166,0.07);
+
   /* Glow */
-  --glow-primary:   0 0 40px rgba(99,102,241,0.25);
-  --glow-accent:    0 0 40px rgba(139,92,246,0.25);
+  --glow-primary: 0 0 40px rgba(99,102,241,0.25);
+  --glow-accent:  0 0 40px rgba(139,92,246,0.25);
 
   /* Radius */
   --r-sm: 8px;
   --r-md: 14px;
   --r-lg: 20px;
   --r-xl: 28px;
+
+  /* Toggle */
+  --clr-toggle-bg:    rgba(99,102,241,0.12);
+  --clr-toggle-border:rgba(99,102,241,0.3);
+  --clr-toggle-icon:  #818cf8;
+
+  /* Scrollbar */
+  --clr-scroll-track: #0a0a14;
+  --clr-scroll-thumb: #6366f1;
+}
+
+/* ── Design Tokens — LIGHT ───────────────────────────────────────── */
+:root.light {
+  /* Brand — slightly deeper for contrast on white */
+  --clr-primary:    #4f46e5;
+  --clr-primary-lt: #6366f1;
+  --clr-accent:     #7c3aed;
+  --clr-accent-lt:  #8b5cf6;
+  --clr-teal:       #0d9488;
+
+  /* Surfaces */
+  --clr-bg:         #f0f4ff;
+  --clr-surface:    #ffffff;
+  --clr-surface-2:  #e8eeff;
+  --clr-border:     rgba(79,70,229,0.15);
+  --clr-border-lt:  rgba(99,102,241,0.3);
+
+  /* Text */
+  --clr-text:       #1e1b4b;
+  --clr-text-muted: #4338ca;
+  --clr-text-dim:   #6366f1;
+
+  /* Card */
+  --clr-card-bg:      rgba(255,255,255,0.92);
+  --clr-card-border:  rgba(79,70,229,0.14);
+  --clr-card-shadow:  0 4px 24px rgba(79,70,229,0.09);
+  --clr-card-glow:    0 0 40px rgba(79,70,229,0.12), 0 4px 24px rgba(79,70,229,0.08);
+
+  /* Nav */
+  --clr-nav-bg:       rgba(240,244,255,0.96);
+  --clr-nav-border:   rgba(79,70,229,0.18);
+
+  /* Footer */
+  --clr-footer-bg:    rgba(224,231,255,0.98);
+  --clr-footer-border:rgba(79,70,229,0.15);
+
+  /* Animated bg orbs */
+  --orb-1: rgba(99,102,241,0.07);
+  --orb-2: rgba(139,92,246,0.06);
+  --orb-3: rgba(20,184,166,0.05);
+
+  /* Glow */
+  --glow-primary: 0 0 30px rgba(79,70,229,0.18);
+  --glow-accent:  0 0 30px rgba(124,58,237,0.15);
+
+  /* Toggle */
+  --clr-toggle-bg:    rgba(79,70,229,0.10);
+  --clr-toggle-border:rgba(79,70,229,0.25);
+  --clr-toggle-icon:  #4f46e5;
+
+  /* Scrollbar */
+  --clr-scroll-track: #e8eeff;
+  --clr-scroll-thumb: #4f46e5;
 }
 
 /* ── Reset / Base ─────────────────────────────────────────────────── */
@@ -49,11 +131,12 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.35s ease, color 0.35s ease;
 }
 
 /* ── Scrollbar ────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--clr-bg); }
+::-webkit-scrollbar-track { background: var(--clr-scroll-track); }
 ::-webkit-scrollbar-thumb { background: var(--clr-primary); border-radius: 99px; }
 
 /* ── Typography ───────────────────────────────────────────────────── */
@@ -73,31 +156,32 @@ a:hover { color: var(--clr-accent-lt); }
 
 /* ── Glass Card Utility ───────────────────────────────────────────── */
 .glass {
-  background: rgba(17, 17, 34, 0.7);
+  background: var(--clr-card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--clr-border);
   border-radius: var(--r-lg);
+  transition: background 0.35s ease, border-color 0.35s ease;
 }
-.glass:hover {
-  border-color: var(--clr-border-lt);
-}
+.glass:hover { border-color: var(--clr-border-lt); }
 
 /* ── Animated Gradient Background ────────────────────────────────── */
 .animated-bg {
   position: relative;
   background: var(--clr-bg);
   overflow: hidden;
+  transition: background 0.35s ease;
 }
 .animated-bg::before {
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 20%, rgba(99,102,241,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 80% 80%, rgba(139,92,246,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 40% at 60% 10%, rgba(20,184,166,0.07) 0%, transparent 50%);
+    radial-gradient(ellipse 80% 60% at 20% 20%, var(--orb-1) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 80%, var(--orb-2) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 60% 10%, var(--orb-3) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
+  transition: background 0.35s ease;
 }
 .animated-bg > * { position: relative; z-index: 1; }
 
@@ -124,6 +208,12 @@ a:hover { color: var(--clr-accent-lt); }
   to   { opacity: 1; }
 }
 
+/* Theme toggle slide animation */
+@keyframes toggleSlide {
+  0%   { transform: scale(0.7) rotate(-30deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg);     opacity: 1; }
+}
+
 .animate-fadeInUp { animation: fadeInUp 0.5s ease forwards; }
 .animate-fadeIn   { animation: fadeIn   0.4s ease forwards; }
 .animate-float    { animation: float    3s ease-in-out infinite; }
@@ -135,3 +225,36 @@ a:hover { color: var(--clr-accent-lt); }
   animation: shimmer 1.5s infinite;
   border-radius: var(--r-sm);
 }
+
+/* ── Theme toggle button ──────────────────────────────────────────── */
+.theme-toggle {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--clr-toggle-bg);
+  border: 1px solid var(--clr-toggle-border);
+  color: var(--clr-toggle-icon);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: var(--clr-toggle-border);
+}
+.theme-toggle svg {
+  animation: toggleSlide 0.3s ease;
+}
+
+/* ── Light-mode overrides for Markdown content ───────────────────── */
+:root.light .itinerary-md h1,
+:root.light .itinerary-md h2 { color: #4f46e5; border-bottom-color: rgba(79,70,229,0.15); }
+:root.light .itinerary-md h3  { color: #6366f1; }
+:root.light .itinerary-md p, :root.light .itinerary-md li { color: #374151; }
+:root.light .itinerary-md strong { color: #1e1b4b; }
+:root.light .itinerary-md em   { color: #6366f1; }
+:root.light .hotel-md h1,
+:root.light .hotel-md h2,
+:root.light .hotel-md h3 { color: #0d9488; }
+:root.light .hotel-md p  { color: #374151; }
+:root.light .hotel-md strong { color: #1e1b4b; }
