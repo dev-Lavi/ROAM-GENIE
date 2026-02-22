@@ -1,16 +1,66 @@
-# React + Vite
+# Roam Genie 🧞‍♂️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Roam Genie is a modern, responsive web application built with React 19 and Vite. It leverages Tailwind CSS for styling and includes features like dynamic routing and markdown rendering to provide a seamless user experience.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19 & Vite**: Built with the latest React features for high performance and a fast development cycle.
+- **Tailwind CSS**: Modern utility-first styling for a fully responsive and customizable UI.
+- **React Router 7**: Robust client-side routing for multi-page navigation.
+- **Markdown Support**: Render markdown content directly within the application using `react-markdown`.
+- **Lucide Icons**: Beautifully crafted, consistent icons for a professional look.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend Framework**: React 19
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Routing**: React Router DOM v7
+- **Icons**: Lucide React
+- **Linting**: ESLint
 
-## Expanding the ESLint configuration
+## 📦 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <your-repository-url>
+   cd roam-genie
+
+   Install dependencies:
+
+Bash
+npm install
+Development
+Start the development server with Hot Module Replacement (HMR):
+
+Bash
+npm run dev
+Build
+To create an optimized production build:
+
+Bash
+npm run build
+Preview
+Preview the production build locally:
+
+Bash
+npm run preview
+🧹 Linting
+Keep the code clean and follow best practices:
+
+Bash
+npm run lint
+📄 License
+This project is private and intended for personal use.
+
+
+### Why this is effective:
+* **Reflects your actual stack**: It lists React 19, React Router 7, and Tailwind CSS, which are explicitly defined in your `package.json`.
+* **Clear Instructions**: It provides standard commands for installation and development based on your project's scripts.
+* **Professional Structure**: It replaces the default Vite template text with project-specific details while maintaining a clean, readable layout.

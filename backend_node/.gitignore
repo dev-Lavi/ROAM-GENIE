@@ -1,0 +1,7 @@
+# RoamGenie Backend
+
+node_modules/
+.env
+uploads/
+*.log
+dist/
