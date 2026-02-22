@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
     Clock, ExternalLink, Plane, ChevronDown, ChevronUp,
-    MapPin, Info, Armchair,
+    MapPin, Info,
 } from 'lucide-react';
 import { formatDuration } from '../../utils/helpers';
 
