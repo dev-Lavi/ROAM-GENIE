@@ -23,9 +23,9 @@ const TYPE_META = {
 const Row = ({ label, value }) => {
     if (!value) return null;
     return (
-        <div style={{ display: 'flex', gap: '12px', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-            <span style={{ color: '#64748b', fontSize: '0.82rem', minWidth: '140px', flexShrink: 0 }}>{label}</span>
-            <span style={{ color: '#e2e8f0', fontSize: '0.88rem', fontWeight: 500 }}>{value}</span>
+        <div style={{ display: 'flex', gap: '12px', padding: '8px 0', borderBottom: '1px solid var(--clr-border)' }}>
+            <span style={{ color: 'var(--clr-text-dim)', fontSize: '0.82rem', minWidth: '140px', flexShrink: 0 }}>{label}</span>
+            <span style={{ color: 'var(--clr-text)', fontSize: '0.88rem', fontWeight: 500 }}>{value}</span>
         </div>
     );
 };
@@ -39,9 +39,12 @@ const BookingCard = ({ booking }) => {
 
     return (
         <div style={{
-            borderRadius: '20px', background: 'rgba(15,15,30,0.8)',
-            border: `1.5px solid ${meta.color}30`, overflow: 'hidden',
+            borderRadius: '20px',
+            background: 'var(--clr-card-bg)',
+            border: `1.5px solid ${meta.color}30`,
+            overflow: 'hidden',
             animation: 'fadeInUp 0.4s ease',
+            boxShadow: 'var(--clr-card-shadow)',
         }}>
             <div
                 onClick={() => setExpanded(!expanded)}
@@ -60,11 +63,11 @@ const BookingCard = ({ booking }) => {
                     <Icon size={18} style={{ color: meta.color }} />
                 </div>
                 <div style={{ flex: 1 }}>
-                    <p style={{ color: '#e2e8f0', fontWeight: 700, fontSize: '0.95rem', margin: 0, fontFamily: "'Space Grotesk',sans-serif" }}>
+                    <p style={{ color: 'var(--clr-text)', fontWeight: 700, fontSize: '0.95rem', margin: 0, fontFamily: "'Space Grotesk',sans-serif" }}>
                         {meta.label} Confirmation
                     </p>
                     {(booking.pnr || booking.bookingReference) && (
-                        <p style={{ color: '#64748b', fontSize: '0.78rem', margin: '2px 0 0' }}>
+                        <p style={{ color: 'var(--clr-text-dim)', fontSize: '0.78rem', margin: '2px 0 0' }}>
                             Ref: {booking.pnr || booking.bookingReference}
                         </p>
                     )}
@@ -76,13 +79,13 @@ const BookingCard = ({ booking }) => {
                     {meta.label.toUpperCase()}
                 </span>
                 {expanded
-                    ? <ChevronUp size={16} style={{ color: '#475569', flexShrink: 0 }} />
-                    : <ChevronDown size={16} style={{ color: '#475569', flexShrink: 0 }} />
+                    ? <ChevronUp size={16} style={{ color: 'var(--clr-text-dim)', flexShrink: 0 }} />
+                    : <ChevronDown size={16} style={{ color: 'var(--clr-text-dim)', flexShrink: 0 }} />
                 }
             </div>
 
             {expanded && (
-                <div style={{ padding: '20px 24px' }}>
+                <div style={{ padding: '20px 24px', background: 'var(--clr-card-bg)' }}>
                     {/* Flight */}
                     {type === 'flight' && (
                         <>
@@ -90,22 +93,22 @@ const BookingCard = ({ booking }) => {
                                 <div style={{
                                     display: 'flex', alignItems: 'center', gap: '12px',
                                     padding: '14px 18px', borderRadius: '12px', marginBottom: '16px',
-                                    background: 'rgba(129,140,248,0.06)', border: '1px solid rgba(129,140,248,0.15)',
+                                    background: 'rgba(129,140,248,0.08)', border: '1px solid rgba(129,140,248,0.2)',
                                 }}>
                                     <div style={{ textAlign: 'center' }}>
                                         <p style={{ color: '#818cf8', fontWeight: 800, fontSize: '1.1rem', margin: 0, fontFamily: "'Space Grotesk',sans-serif" }}>
                                             {booking.departure.iata || booking.departure.city}
                                         </p>
-                                        <p style={{ color: '#475569', fontSize: '0.7rem', margin: '2px 0 0' }}>{booking.departure.time || ''}</p>
+                                        <p style={{ color: 'var(--clr-text-dim)', fontSize: '0.7rem', margin: '2px 0 0' }}>{booking.departure.time || ''}</p>
                                     </div>
                                     <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg,#818cf8,#6366f1)', position: 'relative' }}>
-                                        <Plane size={14} style={{ color: '#818cf8', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', background: 'rgba(15,15,30,0.9)', padding: '0 4px' }} />
+                                        <Plane size={14} style={{ color: '#818cf8', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', background: 'var(--clr-card-bg)', padding: '0 4px' }} />
                                     </div>
                                     <div style={{ textAlign: 'center' }}>
                                         <p style={{ color: '#818cf8', fontWeight: 800, fontSize: '1.1rem', margin: 0, fontFamily: "'Space Grotesk',sans-serif" }}>
                                             {booking.arrival.iata || booking.arrival.city}
                                         </p>
-                                        <p style={{ color: '#475569', fontSize: '0.7rem', margin: '2px 0 0' }}>{booking.arrival.time || ''}</p>
+                                        <p style={{ color: 'var(--clr-text-dim)', fontSize: '0.7rem', margin: '2px 0 0' }}>{booking.arrival.time || ''}</p>
                                     </div>
                                 </div>
                             )}
@@ -122,15 +125,15 @@ const BookingCard = ({ booking }) => {
                             <Row label="Baggage" value={booking.baggageAllowance} />
                             {Array.isArray(booking.layovers) && booking.layovers.length > 0 && (
                                 <div style={{ marginTop: '12px' }}>
-                                    <p style={{ color: '#64748b', fontSize: '0.82rem', marginBottom: '8px' }}>Layovers</p>
+                                    <p style={{ color: 'var(--clr-text-dim)', fontSize: '0.82rem', marginBottom: '8px' }}>Layovers</p>
                                     {booking.layovers.map((l, i) => (
                                         <div key={i} style={{
                                             padding: '8px 12px', borderRadius: '8px', marginBottom: '6px',
-                                            background: 'rgba(251,146,60,0.06)', border: '1px solid rgba(251,146,60,0.15)',
+                                            background: 'rgba(251,146,60,0.08)', border: '1px solid rgba(251,146,60,0.2)',
                                             display: 'flex', gap: '8px', alignItems: 'center',
                                         }}>
                                             <span style={{ color: '#fb923c', fontSize: '0.8rem', fontWeight: 700 }}>{l.iata || l.city}</span>
-                                            <span style={{ color: '#64748b', fontSize: '0.78rem' }}>{l.duration}</span>
+                                            <span style={{ color: 'var(--clr-text-dim)', fontSize: '0.78rem' }}>{l.duration}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -168,9 +171,9 @@ const BookingCard = ({ booking }) => {
                             <Row label="End Date" value={booking.tour.endDate} />
                             {Array.isArray(booking.tour.inclusions) && booking.tour.inclusions.length > 0 && (
                                 <div style={{ marginTop: '12px' }}>
-                                    <p style={{ color: '#64748b', fontSize: '0.82rem', marginBottom: '8px' }}>Inclusions</p>
+                                    <p style={{ color: 'var(--clr-text-dim)', fontSize: '0.82rem', marginBottom: '8px' }}>Inclusions</p>
                                     {booking.tour.inclusions.map((inc, i) => (
-                                        <p key={i} style={{ color: '#94a3b8', fontSize: '0.85rem', margin: '4px 0', paddingLeft: '12px', borderLeft: '2px solid #a78bfa40' }}>• {inc}</p>
+                                        <p key={i} style={{ color: 'var(--clr-text-muted)', fontSize: '0.85rem', margin: '4px 0', paddingLeft: '12px', borderLeft: '2px solid rgba(167,139,250,0.4)' }}>• {inc}</p>
                                     ))}
                                 </div>
                             )}
@@ -184,9 +187,9 @@ const BookingCard = ({ booking }) => {
                     {booking.summary && (
                         <div style={{
                             marginTop: '16px', padding: '14px 16px', borderRadius: '12px',
-                            background: 'rgba(99,102,241,0.06)', border: '1px solid rgba(99,102,241,0.15)',
+                            background: 'rgba(99,102,241,0.06)', border: '1px solid rgba(99,102,241,0.18)',
                         }}>
-                            <p style={{ color: '#94a3b8', fontSize: '0.85rem', margin: 0, lineHeight: 1.6 }}>
+                            <p style={{ color: 'var(--clr-text-muted)', fontSize: '0.85rem', margin: 0, lineHeight: 1.6 }}>
                                 💬 {booking.summary}
                             </p>
                         </div>
@@ -205,9 +208,10 @@ const ItineraryCard = ({ itinerary }) => {
     return (
         <div style={{
             borderRadius: '20px', overflow: 'hidden',
-            background: 'rgba(15,15,30,0.85)',
+            background: 'var(--clr-card-bg)',
             border: '1.5px solid rgba(139,92,246,0.3)',
             animation: 'fadeInUp 0.5s ease 0.15s both',
+            boxShadow: 'var(--clr-card-shadow)',
         }}>
             {/* Header */}
             <div
@@ -215,7 +219,7 @@ const ItineraryCard = ({ itinerary }) => {
                 style={{
                     display: 'flex', alignItems: 'center', gap: '14px',
                     padding: '18px 24px', cursor: 'pointer',
-                    background: 'linear-gradient(135deg,rgba(139,92,246,0.12),transparent)',
+                    background: 'linear-gradient(135deg,rgba(139,92,246,0.10),transparent)',
                     borderBottom: expanded ? '1px solid rgba(139,92,246,0.15)' : 'none',
                 }}
             >
@@ -227,10 +231,10 @@ const ItineraryCard = ({ itinerary }) => {
                     <Calendar size={18} style={{ color: '#a78bfa' }} />
                 </div>
                 <div style={{ flex: 1 }}>
-                    <p style={{ color: '#e2e8f0', fontWeight: 700, fontSize: '0.95rem', margin: 0, fontFamily: "'Space Grotesk',sans-serif" }}>
+                    <p style={{ color: 'var(--clr-text)', fontWeight: 700, fontSize: '0.95rem', margin: 0, fontFamily: "'Space Grotesk',sans-serif" }}>
                         AI-Generated Itinerary
                     </p>
-                    <p style={{ color: '#64748b', fontSize: '0.78rem', margin: '2px 0 0' }}>
+                    <p style={{ color: 'var(--clr-text-dim)', fontSize: '0.78rem', margin: '2px 0 0' }}>
                         Day-by-day travel plan built from your booking
                     </p>
                 </div>
@@ -241,44 +245,14 @@ const ItineraryCard = ({ itinerary }) => {
                     ITINERARY
                 </span>
                 {expanded
-                    ? <ChevronUp size={16} style={{ color: '#475569', flexShrink: 0 }} />
-                    : <ChevronDown size={16} style={{ color: '#475569', flexShrink: 0 }} />
+                    ? <ChevronUp size={16} style={{ color: 'var(--clr-text-dim)', flexShrink: 0 }} />
+                    : <ChevronDown size={16} style={{ color: 'var(--clr-text-dim)', flexShrink: 0 }} />
                 }
             </div>
 
             {/* Body — rendered markdown */}
             {expanded && (
-                <div style={{ padding: '24px 28px' }}>
-                    <style>{`
-                        .itinerary-md h1, .itinerary-md h2 {
-                            color: #a78bfa;
-                            font-family: 'Space Grotesk', sans-serif;
-                            font-size: 1.05rem;
-                            font-weight: 700;
-                            margin: 1.4em 0 0.5em;
-                            padding-bottom: 6px;
-                            border-bottom: 1px solid rgba(139,92,246,0.15);
-                        }
-                        .itinerary-md h3 {
-                            color: #818cf8;
-                            font-size: 0.92rem;
-                            font-weight: 600;
-                            margin: 1em 0 0.4em;
-                        }
-                        .itinerary-md p { color: #94a3b8; font-size: 0.88rem; line-height: 1.75; margin: 0.4em 0; }
-                        .itinerary-md ul, .itinerary-md ol { padding-left: 1.4em; }
-                        .itinerary-md li { color: #94a3b8; font-size: 0.87rem; margin: 0.3em 0; line-height: 1.6; }
-                        .itinerary-md strong { color: #e2e8f0; }
-                        .itinerary-md em { color: #64748b; }
-                        .itinerary-md blockquote {
-                            border-left: 3px solid rgba(139,92,246,0.4);
-                            padding-left: 12px;
-                            margin: 8px 0;
-                            color: #64748b;
-                            font-size: 0.85rem;
-                        }
-                        .itinerary-md hr { border: none; border-top: 1px solid rgba(255,255,255,0.05); margin: 1.2em 0; }
-                    `}</style>
+                <div style={{ padding: '24px 28px', background: 'var(--clr-card-bg)' }}>
                     <div className="itinerary-md">
                         <ReactMarkdown>{itinerary}</ReactMarkdown>
                     </div>
@@ -292,14 +266,15 @@ const ItineraryCard = ({ itinerary }) => {
 const WhatsAppPreview = ({ text, sent, error }) => (
     <div style={{
         borderRadius: '16px', overflow: 'hidden',
-        background: 'rgba(10,10,20,0.9)',
+        background: 'var(--clr-card-bg)',
         border: `1.5px solid ${sent ? 'rgba(37,211,102,0.25)' : error ? 'rgba(239,68,68,0.2)' : 'rgba(37,211,102,0.15)'}`,
         animation: 'fadeInUp 0.5s ease 0.25s both',
+        boxShadow: 'var(--clr-card-shadow)',
     }}>
         <div style={{
             padding: '12px 18px',
-            background: sent ? 'rgba(37,211,102,0.08)' : 'rgba(255,255,255,0.03)',
-            borderBottom: '1px solid rgba(255,255,255,0.05)',
+            background: sent ? 'rgba(37,211,102,0.08)' : 'var(--clr-surface)',
+            borderBottom: '1px solid var(--clr-border)',
             display: 'flex', alignItems: 'center', gap: '10px',
         }}>
             <MessageSquare size={16} style={{ color: '#25d366' }} />
@@ -315,21 +290,22 @@ const WhatsAppPreview = ({ text, sent, error }) => (
                 <span style={{
                     marginLeft: 'auto', padding: '2px 10px', borderRadius: '99px',
                     fontSize: '0.72rem', fontWeight: 700,
-                    background: 'rgba(239,68,68,0.1)', color: '#f87171', border: '1px solid rgba(239,68,68,0.2)',
+                    background: 'rgba(239,68,68,0.10)', color: '#f87171', border: '1px solid rgba(239,68,68,0.2)',
                 }}>⚠ Send Failed</span>
             )}
             {!sent && !error && (
                 <span style={{
                     marginLeft: 'auto', padding: '2px 10px', borderRadius: '99px',
                     fontSize: '0.72rem', fontWeight: 600,
-                    background: 'rgba(100,116,139,0.1)', color: '#64748b', border: '1px solid rgba(100,116,139,0.15)',
+                    background: 'var(--clr-surface-2)', color: 'var(--clr-text-dim)', border: '1px solid var(--clr-border)',
                 }}>Preview</span>
             )}
         </div>
         <div style={{
             padding: '18px', fontFamily: 'monospace', fontSize: '0.78rem',
-            color: '#94a3b8', lineHeight: 1.8, whiteSpace: 'pre-wrap',
+            color: 'var(--clr-text-muted)', lineHeight: 1.8, whiteSpace: 'pre-wrap',
             maxHeight: '360px', overflowY: 'auto',
+            background: 'var(--clr-card-bg)',
         }}>
             {text}
         </div>
@@ -387,7 +363,6 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                 });
             }
             setResult(data);
-            // Auto-scroll to results
             setTimeout(() => {
                 document.getElementById('scanner-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 200);
@@ -405,25 +380,20 @@ Layover: Frankfurt (FRA) — 2h 15m`;
         if (dropped) { setFile(dropped); setMode('image'); }
     };
 
-    const inp = {
-        width: '100%', padding: '12px 16px', borderRadius: '12px',
-        background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
-        color: '#e2e8f0', fontSize: '0.88rem', outline: 'none',
-        boxSizing: 'border-box', transition: 'border-color 0.2s',
-    };
-
     return (
         <PageWrapper title="Trip DNA Scanner">
-            {/* ── Hero ───────────────────────────────────────────────── */}
+            {/* ── Hero ─────────────────────────────────────────────── */}
             <section style={{ padding: '72px 24px 48px', textAlign: 'center', position: 'relative' }}>
-                <div style={{ position: 'absolute', top: '10%', left: '5%', width: '350px', height: '350px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(99,102,241,0.1) 0%,transparent 70%)', pointerEvents: 'none' }} />
-                <div style={{ position: 'absolute', bottom: '5%', right: '5%', width: '280px', height: '280px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(45,212,191,0.08) 0%,transparent 70%)', pointerEvents: 'none' }} />
+                <div style={{ position: 'absolute', top: '10%', left: '5%', width: '350px', height: '350px', borderRadius: '50%', background: 'radial-gradient(circle,var(--orb-1) 0%,transparent 70%)', pointerEvents: 'none' }} />
+                <div style={{ position: 'absolute', bottom: '5%', right: '5%', width: '280px', height: '280px', borderRadius: '50%', background: 'radial-gradient(circle,var(--orb-2) 0%,transparent 70%)', pointerEvents: 'none' }} />
 
+                {/* Badge */}
                 <div style={{
                     display: 'inline-flex', alignItems: 'center', gap: '8px',
                     padding: '6px 18px', borderRadius: '99px',
-                    background: 'rgba(99,102,241,0.12)', border: '1px solid rgba(99,102,241,0.3)',
-                    color: '#818cf8', fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.05em', marginBottom: '28px',
+                    background: 'rgba(99,102,241,0.10)', border: '1px solid rgba(99,102,241,0.28)',
+                    color: 'var(--clr-primary-lt)', fontSize: '0.82rem', fontWeight: 700,
+                    letterSpacing: '0.05em', marginBottom: '28px',
                 }}>
                     <ScanLine size={13} /> AI TRIP DNA SCANNER
                 </div>
@@ -432,17 +402,19 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                     fontFamily: "'Space Grotesk',sans-serif",
                     fontSize: 'clamp(2rem,5vw,3.5rem)',
                     fontWeight: 800, lineHeight: 1.12, margin: '0 auto 20px', maxWidth: '680px',
+                    color: 'var(--clr-text)',
                 }}>
                     Forward a Booking.
                     <span style={{
                         display: 'block', marginTop: '4px',
-                        background: 'linear-gradient(135deg,#818cf8,#a78bfa,#2dd4bf)',
+                        background: 'linear-gradient(135deg,var(--clr-primary-lt),var(--clr-accent-lt),var(--clr-teal))',
                         WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
                     }}>
                         We Build Your Itinerary.
                     </span>
                 </h1>
-                <p style={{ color: '#64748b', fontSize: '1rem', maxWidth: '500px', margin: '0 auto', lineHeight: 1.7 }}>
+
+                <p style={{ color: 'var(--clr-text-dim)', fontSize: '1rem', maxWidth: '500px', margin: '0 auto', lineHeight: 1.7 }}>
                     Paste any flight confirmation, hotel voucher, or booking email. RoamGenie's AI extracts every detail
                     and generates a complete day-by-day itinerary — automatically.
                 </p>
@@ -458,14 +430,15 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                         <div key={n} style={{
                             display: 'flex', alignItems: 'center', gap: '8px',
                             padding: '8px 16px', borderRadius: '99px',
-                            background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)',
-                            fontSize: '0.78rem', color: '#64748b', margin: '4px',
+                            background: 'var(--clr-surface)',
+                            border: '1px solid var(--clr-border)',
+                            fontSize: '0.78rem', color: 'var(--clr-text-muted)', margin: '4px',
                         }}>
                             <span style={{
                                 width: '20px', height: '20px', borderRadius: '50%', flexShrink: 0,
-                                background: 'rgba(99,102,241,0.2)', border: '1px solid rgba(99,102,241,0.3)',
+                                background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.3)',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                color: '#818cf8', fontWeight: 700, fontSize: '0.72rem',
+                                color: 'var(--clr-primary-lt)', fontWeight: 700, fontSize: '0.72rem',
                             }}>{n}</span>
                             {label}
                         </div>
@@ -473,7 +446,7 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                 </div>
             </section>
 
-            {/* ── Input Card ──────────────────────────────────────────── */}
+            {/* ── Input Card ───────────────────────────────────────── */}
             <section style={{ padding: '0 24px 48px' }}>
                 <div style={{ maxWidth: '860px', margin: '0 auto' }}>
                     <Card glow style={{ padding: '32px' }}>
@@ -489,9 +462,13 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                                     onClick={() => setMode(id)}
                                     style={{
                                         flex: 1, padding: '10px 16px', borderRadius: '10px',
-                                        border: mode === id ? '1.5px solid rgba(99,102,241,0.5)' : '1px solid rgba(255,255,255,0.08)',
-                                        background: mode === id ? 'rgba(99,102,241,0.12)' : 'rgba(255,255,255,0.03)',
-                                        color: mode === id ? '#818cf8' : '#64748b',
+                                        border: mode === id
+                                            ? '1.5px solid rgba(99,102,241,0.5)'
+                                            : '1px solid var(--clr-border)',
+                                        background: mode === id
+                                            ? 'rgba(99,102,241,0.12)'
+                                            : 'var(--clr-surface)',
+                                        color: mode === id ? 'var(--clr-primary-lt)' : 'var(--clr-text-dim)',
                                         fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer',
                                         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
                                         transition: 'all 0.2s',
@@ -506,13 +483,15 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                         {mode === 'text' && (
                             <div style={{ marginBottom: '20px' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                                    <label style={{ color: '#94a3b8', fontSize: '0.85rem', fontWeight: 600 }}>Booking Confirmation Text</label>
+                                    <label style={{ color: 'var(--clr-text-muted)', fontSize: '0.85rem', fontWeight: 600 }}>
+                                        Booking Confirmation Text
+                                    </label>
                                     <button
                                         onClick={() => setRawText(EXAMPLE_TEXT)}
                                         style={{
                                             padding: '3px 12px', borderRadius: '8px',
                                             border: '1px solid rgba(99,102,241,0.3)',
-                                            background: 'rgba(99,102,241,0.08)', color: '#818cf8',
+                                            background: 'rgba(99,102,241,0.08)', color: 'var(--clr-primary-lt)',
                                             fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer',
                                         }}
                                     >
@@ -524,7 +503,15 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                                     onChange={e => setRawText(e.target.value)}
                                     placeholder="Paste your flight confirmation, hotel voucher, tour booking, or any travel document here…"
                                     rows={9}
-                                    style={{ ...inp, resize: 'vertical', lineHeight: 1.6, fontFamily: 'monospace', fontSize: '0.82rem' }}
+                                    style={{
+                                        width: '100%', padding: '12px 16px', borderRadius: '12px',
+                                        border: '1px solid var(--clr-border)',
+                                        background: 'var(--clr-input-bg, var(--clr-surface))',
+                                        color: 'var(--clr-text)',
+                                        fontSize: '0.82rem', outline: 'none',
+                                        boxSizing: 'border-box', transition: 'border-color 0.2s',
+                                        resize: 'vertical', lineHeight: 1.6, fontFamily: 'monospace',
+                                    }}
                                 />
                             </div>
                         )}
@@ -538,8 +525,8 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                                 onClick={() => fileRef.current?.click()}
                                 style={{
                                     marginBottom: '20px', padding: '40px 24px', borderRadius: '16px', cursor: 'pointer',
-                                    border: `2px dashed ${dragOver ? 'rgba(99,102,241,0.6)' : 'rgba(255,255,255,0.1)'}`,
-                                    background: dragOver ? 'rgba(99,102,241,0.06)' : 'rgba(255,255,255,0.02)',
+                                    border: `2px dashed ${dragOver ? 'rgba(99,102,241,0.6)' : 'var(--clr-border)'}`,
+                                    background: dragOver ? 'rgba(99,102,241,0.06)' : 'var(--clr-surface)',
                                     textAlign: 'center', transition: 'all 0.2s',
                                 }}
                             >
@@ -547,13 +534,13 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                                 {file ? (
                                     <div>
                                         <CheckCircle size={32} style={{ color: '#2dd4bf', marginBottom: '8px' }} />
-                                        <p style={{ color: '#e2e8f0', fontWeight: 600, margin: '0 0 4px' }}>{file.name}</p>
-                                        <p style={{ color: '#64748b', fontSize: '0.8rem', margin: 0 }}>{(file.size / 1024).toFixed(1)} KB</p>
+                                        <p style={{ color: 'var(--clr-text)', fontWeight: 600, margin: '0 0 4px' }}>{file.name}</p>
+                                        <p style={{ color: 'var(--clr-text-dim)', fontSize: '0.8rem', margin: 0 }}>{(file.size / 1024).toFixed(1)} KB</p>
                                         <button
                                             onClick={e => { e.stopPropagation(); setFile(null); }}
                                             style={{
                                                 marginTop: '12px', padding: '4px 14px', borderRadius: '8px',
-                                                border: '1px solid rgba(239,68,68,0.3)', background: 'rgba(239,68,68,0.08)',
+                                                border: '1px solid rgba(239,68,68,0.35)', background: 'rgba(239,68,68,0.08)',
                                                 color: '#f87171', fontSize: '0.78rem', cursor: 'pointer',
                                             }}
                                         >
@@ -562,9 +549,9 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                                     </div>
                                 ) : (
                                     <div>
-                                        <Upload size={32} style={{ color: '#475569', marginBottom: '12px' }} />
-                                        <p style={{ color: '#94a3b8', fontWeight: 600, margin: '0 0 4px', fontSize: '0.95rem' }}>Drop your booking image here</p>
-                                        <p style={{ color: '#475569', fontSize: '0.82rem', margin: 0 }}>or click to browse — supports JPG, PNG, PDF</p>
+                                        <Upload size={32} style={{ color: 'var(--clr-text-dim)', marginBottom: '12px' }} />
+                                        <p style={{ color: 'var(--clr-text-muted)', fontWeight: 600, margin: '0 0 4px', fontSize: '0.95rem' }}>Drop your booking image here</p>
+                                        <p style={{ color: 'var(--clr-text-dim)', fontSize: '0.82rem', margin: 0 }}>or click to browse — supports JPG, PNG, PDF</p>
                                     </div>
                                 )}
                             </div>
@@ -573,16 +560,38 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                         {/* Optional fields */}
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '24px' }}>
                             <div>
-                                <label style={{ color: '#94a3b8', fontSize: '0.82rem', fontWeight: 600, display: 'block', marginBottom: '6px' }}>
-                                    Passport Country <span style={{ color: '#475569', fontWeight: 400 }}>(optional — visa check)</span>
+                                <label style={{ color: 'var(--clr-text-muted)', fontSize: '0.82rem', fontWeight: 600, display: 'block', marginBottom: '6px' }}>
+                                    Passport Country <span style={{ color: 'var(--clr-text-dim)', fontWeight: 400 }}>(optional — visa check)</span>
                                 </label>
-                                <input value={passport} onChange={e => setPassport(e.target.value)} placeholder="e.g. India" style={inp} />
+                                <input
+                                    value={passport}
+                                    onChange={e => setPassport(e.target.value)}
+                                    placeholder="e.g. India"
+                                    style={{
+                                        width: '100%', padding: '12px 16px', borderRadius: '12px',
+                                        border: '1px solid var(--clr-border)',
+                                        background: 'var(--clr-input-bg, var(--clr-surface))',
+                                        color: 'var(--clr-text)',
+                                        fontSize: '0.88rem', outline: 'none', boxSizing: 'border-box',
+                                    }}
+                                />
                             </div>
                             <div>
-                                <label style={{ color: '#94a3b8', fontSize: '0.82rem', fontWeight: 600, display: 'block', marginBottom: '6px' }}>
-                                    WhatsApp Number <span style={{ color: '#475569', fontWeight: 400 }}>(optional — get itinerary on WhatsApp)</span>
+                                <label style={{ color: 'var(--clr-text-muted)', fontSize: '0.82rem', fontWeight: 600, display: 'block', marginBottom: '6px' }}>
+                                    WhatsApp Number <span style={{ color: 'var(--clr-text-dim)', fontWeight: 400 }}>(optional — get itinerary on WhatsApp)</span>
                                 </label>
-                                <input value={whatsapp} onChange={e => setWhatsapp(e.target.value)} placeholder="+91 9876543210" style={inp} />
+                                <input
+                                    value={whatsapp}
+                                    onChange={e => setWhatsapp(e.target.value)}
+                                    placeholder="+91 9876543210"
+                                    style={{
+                                        width: '100%', padding: '12px 16px', borderRadius: '12px',
+                                        border: '1px solid var(--clr-border)',
+                                        background: 'var(--clr-input-bg, var(--clr-surface))',
+                                        color: 'var(--clr-text)',
+                                        fontSize: '0.88rem', outline: 'none', boxSizing: 'border-box',
+                                    }}
+                                />
                             </div>
                         </div>
 
@@ -592,7 +601,9 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                             disabled={loading}
                             style={{
                                 width: '100%', padding: '14px 24px', borderRadius: '14px',
-                                background: loading ? 'rgba(99,102,241,0.3)' : 'linear-gradient(135deg,#6366f1,#8b5cf6)',
+                                background: loading
+                                    ? 'rgba(99,102,241,0.3)'
+                                    : 'linear-gradient(135deg,#6366f1,#8b5cf6)',
                                 border: 'none', color: '#fff', fontWeight: 700, fontSize: '0.95rem',
                                 cursor: loading ? 'not-allowed' : 'pointer',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
@@ -607,7 +618,7 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                 </div>
             </section>
 
-            {/* ── Loading ─────────────────────────────────────────────── */}
+            {/* ── Loading ──────────────────────────────────────────── */}
             {loading && (
                 <section style={{ padding: '0 24px 64px' }}>
                     <div style={{ maxWidth: '860px', margin: '0 auto', textAlign: 'center' }}>
@@ -617,7 +628,7 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                                 <div key={step} style={{
                                     padding: '7px 16px', borderRadius: '10px',
                                     background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.2)',
-                                    color: '#6366f1', fontSize: '0.8rem', fontWeight: 600,
+                                    color: 'var(--clr-primary)', fontSize: '0.8rem', fontWeight: 600,
                                     animation: `fadeIn 0.4s ease ${i * 0.4}s both`,
                                 }}>
                                     ✦ {step}
@@ -628,7 +639,7 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                 </section>
             )}
 
-            {/* ── Error ───────────────────────────────────────────────── */}
+            {/* ── Error ────────────────────────────────────────────── */}
             {error && !loading && (
                 <section style={{ padding: '0 24px 48px' }}>
                     <div style={{ maxWidth: '860px', margin: '0 auto' }}>
@@ -639,15 +650,15 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                         }}>
                             <AlertCircle size={20} style={{ color: '#f87171', flexShrink: 0, marginTop: '1px' }} />
                             <div>
-                                <p style={{ color: '#fca5a5', fontWeight: 700, fontSize: '0.9rem', margin: '0 0 4px' }}>Scan Failed</p>
-                                <p style={{ color: '#94a3b8', fontSize: '0.85rem', margin: 0 }}>{error}</p>
+                                <p style={{ color: '#f87171', fontWeight: 700, fontSize: '0.9rem', margin: '0 0 4px' }}>Scan Failed</p>
+                                <p style={{ color: 'var(--clr-text-muted)', fontSize: '0.85rem', margin: 0 }}>{error}</p>
                             </div>
                         </div>
                     </div>
                 </section>
             )}
 
-            {/* ── Results ─────────────────────────────────────────────── */}
+            {/* ── Results ──────────────────────────────────────────── */}
             {result && !loading && (
                 <section id="scanner-results" style={{ padding: '0 24px 80px' }}>
                     <div style={{ maxWidth: '860px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -660,7 +671,7 @@ Layover: Frankfurt (FRA) — 2h 15m`;
                             animation: 'fadeInUp 0.4s ease',
                         }}>
                             <CheckCircle size={20} style={{ color: '#22c55e', flexShrink: 0 }} />
-                            <p style={{ color: '#86efac', fontWeight: 600, fontSize: '0.9rem', margin: 0 }}>
+                            <p style={{ color: '#16a34a', fontWeight: 600, fontSize: '0.9rem', margin: 0 }}>
                                 Booking scanned &amp; itinerary generated!
                                 {result.whatsappSent && ' WhatsApp summary sent via Twilio ✓'}
                                 {result.whatsappError && ` (WhatsApp: ${result.whatsappError})`}
@@ -669,17 +680,17 @@ Layover: Frankfurt (FRA) — 2h 15m`;
 
                         {/* OCR raw text (image mode) */}
                         {result.ocrText && (
-                            <details style={{ borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
+                            <details style={{ borderRadius: '14px', overflow: 'hidden', border: '1px solid var(--clr-border)' }}>
                                 <summary style={{
                                     padding: '12px 18px', cursor: 'pointer',
-                                    color: '#64748b', fontSize: '0.82rem', fontWeight: 600,
-                                    background: 'rgba(255,255,255,0.02)', userSelect: 'none',
+                                    color: 'var(--clr-text-dim)', fontSize: '0.82rem', fontWeight: 600,
+                                    background: 'var(--clr-surface)', userSelect: 'none',
                                 }}>
                                     📄 View Raw OCR Text
                                 </summary>
                                 <div style={{
-                                    padding: '14px 18px', background: 'rgba(10,10,20,0.6)',
-                                    fontFamily: 'monospace', fontSize: '0.78rem', color: '#475569',
+                                    padding: '14px 18px', background: 'var(--clr-surface-2)',
+                                    fontFamily: 'monospace', fontSize: '0.78rem', color: 'var(--clr-text-muted)',
                                     whiteSpace: 'pre-wrap', lineHeight: 1.6,
                                 }}>
                                     {result.ocrText}
@@ -707,8 +718,38 @@ Layover: Frankfurt (FRA) — 2h 15m`;
 
             <style>{`
                 @keyframes fadeInUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
-                @keyframes fadeIn   { from { opacity:0;                              } to { opacity:1;                        } }
-                textarea:focus, input:focus { border-color: rgba(99,102,241,0.5) !important; }
+                @keyframes fadeIn   { from { opacity:0; }                             to { opacity:1; }                         }
+                textarea:focus, input:focus { border-color: var(--clr-primary) !important; }
+
+                /* ── Itinerary markdown — DARK ── */
+                .itinerary-md h1, .itinerary-md h2 {
+                    color: #a78bfa;
+                    font-family: 'Space Grotesk', sans-serif;
+                    font-size: 1.05rem; font-weight: 700;
+                    margin: 1.4em 0 0.5em;
+                    padding-bottom: 6px;
+                    border-bottom: 1px solid rgba(139,92,246,0.15);
+                }
+                .itinerary-md h3 { color: #818cf8; font-size: 0.92rem; font-weight: 600; margin: 1em 0 0.4em; }
+                .itinerary-md p  { color: var(--clr-text-muted); font-size: 0.88rem; line-height: 1.75; margin: 0.4em 0; }
+                .itinerary-md ul, .itinerary-md ol { padding-left: 1.4em; }
+                .itinerary-md li { color: var(--clr-text-muted); font-size: 0.87rem; margin: 0.3em 0; line-height: 1.6; }
+                .itinerary-md strong { color: var(--clr-text); }
+                .itinerary-md em     { color: var(--clr-text-dim); }
+                .itinerary-md blockquote {
+                    border-left: 3px solid rgba(139,92,246,0.4);
+                    padding-left: 12px; margin: 8px 0;
+                    color: var(--clr-text-dim); font-size: 0.85rem;
+                }
+                .itinerary-md hr { border: none; border-top: 1px solid var(--clr-border); margin: 1.2em 0; }
+
+                /* ── Itinerary markdown — LIGHT overrides ── */
+                :root.light .itinerary-md h1,
+                :root.light .itinerary-md h2 {
+                    color: #ea580c;
+                    border-bottom-color: rgba(234,88,12,0.15);
+                }
+                :root.light .itinerary-md h3 { color: #c2410c; }
             `}</style>
         </PageWrapper>
     );
