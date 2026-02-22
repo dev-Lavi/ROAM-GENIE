@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
 import PageWrapper from '../components/layout/PageWrapper';
 import TravelForm from '../components/travel/TravelForm';
 import FlightCard from '../components/travel/FlightCard';
@@ -153,6 +152,9 @@ const TravelPlan = () => {
 
     const srcCity = formData ? getCity(formData.source) : '';
     const dstCity = formData ? getCity(formData.destination) : '';
+    const sourceCode = formData?.source || '';
+    const destinationCode = formData?.destination || '';
+
 
     return (
         <PageWrapper title="Plan Trip">
@@ -301,52 +303,34 @@ const TravelPlan = () => {
                                 />
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                                     {flights.map((flight, i) => (
-                                        <FlightCard key={i} index={i} {...flight} />
+                                        <FlightCard
+                                            key={i}
+                                            index={i}
+                                            {...flight}
+                                            sourceCode={sourceCode}
+                                            destinationCode={destinationCode}
+                                        />
                                     ))}
                                 </div>
                             </div>
                         )}
 
-                        {/* Hotels & Restaurants — structured cards (if backend returns arrays) */}
-                        {(hotels.length > 0 || restaurants.length > 0) && (
+                        {/* Hotels & Restaurants — renders structured cards OR parses AI text into cards */}
+                        {(hotels.length > 0 || restaurants.length > 0 || hotelAIText) && (
                             <div style={{ marginBottom: '56px' }}>
                                 <SectionHeader
                                     icon={<Hotel size={20} style={{ color: '#14b8a6' }} />}
                                     title="Stays & Dining"
-                                    subtitle="Curated hotels and local gems"
+                                    subtitle="Curated hotels & restaurants for your trip"
                                     color="#14b8a6"
-                                    count={hotels.length}
+                                    count={hotels.length || undefined}
                                 />
-                                <HotelView hotels={hotels} restaurants={restaurants} />
-                            </div>
-                        )}
-
-                        {/* Hotels & Restaurants — AI text block (from backend Gemini response) */}
-                        {!hotels.length && !restaurants.length && hotelAIText && (
-                            <div style={{ marginBottom: '56px' }}>
-                                <SectionHeader
-                                    icon={<Hotel size={20} style={{ color: '#14b8a6' }} />}
-                                    title="Stays & Dining"
-                                    subtitle="AI-curated hotels and restaurants"
-                                    color="#14b8a6"
+                                <HotelView
+                                    hotels={hotels}
+                                    restaurants={restaurants}
+                                    aiText={hotelAIText}
+                                    city={dstCity}
                                 />
-                                <div style={{
-                                    background: 'rgba(17,17,34,0.7)',
-                                    border: '1px solid rgba(20,184,166,0.18)',
-                                    borderRadius: '20px', padding: '28px',
-                                    color: '#cbd5e1', lineHeight: 1.8, fontSize: '0.95rem',
-                                }}>
-                                    <style>{`
-                                        .hotel-md h1,.hotel-md h2,.hotel-md h3{color:#2dd4bf;font-family:'Space Grotesk',sans-serif;margin:1.1em 0 0.5em;}
-                                        .hotel-md p{margin:0.5em 0;}
-                                        .hotel-md ul{padding-left:1.4em;}
-                                        .hotel-md li{margin:0.3em 0;}
-                                        .hotel-md strong{color:#e2e8f0;}
-                                    `}</style>
-                                    <div className="hotel-md">
-                                        <ReactMarkdown>{hotelAIText}</ReactMarkdown>
-                                    </div>
-                                </div>
                             </div>
                         )}
 
@@ -359,7 +343,7 @@ const TravelPlan = () => {
                                     subtitle="Day-by-day travel plan"
                                     color="#8b5cf6"
                                 />
-                                <ItineraryView itinerary={itinerary} />
+                                <ItineraryView itinerary={itinerary} destination={dstCity} />
                             </div>
                         )}
 
