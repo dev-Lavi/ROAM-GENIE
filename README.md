@@ -1,66 +1,90 @@
 # Roam Genie 🧞‍♂️
 
-Roam Genie is a modern, responsive web application built with React 19 and Vite. It leverages Tailwind CSS for styling and includes features like dynamic routing and markdown rendering to provide a seamless user experience.
+Roam Genie is a modern, responsive web application built with React and Vite. It leverages Tailwind CSS for styling and includes features like dynamic routing and markdown rendering to provide a seamless user experience.
+
+---
 
 ## 🚀 Features
 
-- **React 19 & Vite**: Built with the latest React features for high performance and a fast development cycle.
-- **Tailwind CSS**: Modern utility-first styling for a fully responsive and customizable UI.
-- **React Router 7**: Robust client-side routing for multi-page navigation.
-- **Markdown Support**: Render markdown content directly within the application using `react-markdown`.
-- **Lucide Icons**: Beautifully crafted, consistent icons for a professional look.
+- ⚡ **React + Vite** – Fast development and high performance  
+- 🎨 **Tailwind CSS** – Utility-first styling for responsive UI  
+- 🔀 **React Router** – Smooth client-side navigation  
+- 📝 **Markdown Support** – Render markdown using `react-markdown`  
+- 🎯 **Lucide Icons** – Clean and consistent icon system  
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework**: React 19
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS
-- **Routing**: React Router DOM v7
-- **Icons**: Lucide React
-- **Linting**: ESLint
+- **Frontend**: React  
+- **Build Tool**: Vite  
+- **Styling**: Tailwind CSS  
+- **Routing**: React Router DOM  
+- **Icons**: Lucide React  
+- **Linting**: ESLint  
+
+---
 
 ## 📦 Getting Started
 
 ### Prerequisites
 
-Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
+Make sure you have installed:
+
+- [Node.js](https://nodejs.org/)
+
+---
 
 ### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone <your-repository-url>
-   cd roam-genie
-
-   Install dependencies:
-
-Bash
+```bash
+git clone <your-repository-url>
+cd roam-genie
 npm install
-Development
-Start the development server with Hot Module Replacement (HMR):
+```
 
-Bash
+---
+
+### ▶️ Development
+
+Start the development server:
+
+```bash
 npm run dev
-Build
-To create an optimized production build:
+```
 
-Bash
+---
+
+### 🏗️ Build
+
+Create a production build:
+
+```bash
 npm run build
-Preview
+```
+
+---
+
+### 👀 Preview
+
 Preview the production build locally:
 
-Bash
+```bash
 npm run preview
-🧹 Linting
-Keep the code clean and follow best practices:
+```
 
-Bash
+---
+
+### 🧹 Linting
+
+Run ESLint:
+
+```bash
 npm run lint
-📄 License
+```
+
+---
+
+## 📄 License
+
 This project is private and intended for personal use.
-
-
-### Why this is effective:
-* **Reflects your actual stack**: It lists React 19, React Router 7, and Tailwind CSS, which are explicitly defined in your `package.json`.
-* **Clear Instructions**: It provides standard commands for installation and development based on your project's scripts.
-* **Professional Structure**: It replaces the default Vite template text with project-specific details while maintaining a clean, readable layout.
