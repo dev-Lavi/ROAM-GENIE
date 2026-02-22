@@ -29,20 +29,20 @@ const Navbar = () => {
 
     // Dynamic colours based on theme
     const navBg = scrolled
-        ? (isLight ? 'rgba(240,244,255,0.97)' : 'rgba(10,10,20,0.92)')
-        : (isLight ? 'rgba(240,244,255,0.85)' : 'rgba(10,10,20,0.6)');
+        ? (isLight ? 'rgba(250,247,242,0.97)' : 'rgba(10,10,20,0.92)')
+        : (isLight ? 'rgba(250,247,242,0.85)' : 'rgba(10,10,20,0.6)');
 
     const navBorder = scrolled
         ? (isLight ? 'rgba(79,70,229,0.18)' : 'rgba(99,102,241,0.2)')
         : '1px solid transparent';
 
-    const activeBg = isLight ? 'rgba(79,70,229,0.10)' : 'rgba(99,102,241,0.18)';
-    const activeClr = isLight ? '#4f46e5' : '#818cf8';
-    const activeBorder = isLight ? '1px solid rgba(79,70,229,0.28)' : '1px solid rgba(99,102,241,0.35)';
-    const inactiveClr = isLight ? '#4338ca' : '#94a3b8';
+    const activeBg = isLight ? 'rgba(234,88,12,0.09)' : 'rgba(99,102,241,0.18)';
+    const activeClr = isLight ? '#ea580c' : '#818cf8';
+    const activeBorder = isLight ? '1px solid rgba(234,88,12,0.3)' : '1px solid rgba(99,102,241,0.35)';
+    const inactiveClr = isLight ? '#44311a' : '#94a3b8';
 
-    const drawerBg = isLight ? 'rgba(240,244,255,0.99)' : 'rgba(10,10,20,0.97)';
-    const drawerBorder = isLight ? '1px solid rgba(79,70,229,0.18)' : '1px solid rgba(99,102,241,0.2)';
+    const drawerBg = isLight ? 'rgba(250,247,242,0.99)' : 'rgba(10,10,20,0.97)';
+    const drawerBorder = isLight ? '1px solid rgba(180,140,100,0.2)' : '1px solid rgba(99,102,241,0.2)';
 
     return (
         <>
@@ -53,18 +53,17 @@ const Navbar = () => {
                 background: navBg,
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
-                borderBottom: scrolled ? (isLight ? '1px solid rgba(79,70,229,0.18)' : '1px solid rgba(99,102,241,0.2)') : '1px solid transparent',
+                borderBottom: scrolled ? (isLight ? '1px solid rgba(180,140,100,0.22)' : '1px solid rgba(99,102,241,0.2)') : '1px solid transparent',
                 transition: 'background 0.3s, border-color 0.3s',
             }}>
                 {/* Logo */}
-                <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+                <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '5px', textDecoration: 'none' }}>
                     <div style={{
-                        width: '36px', height: '36px', borderRadius: '10px',
-                        background: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
+                        width: '54px', height: '54px', borderRadius: '10px',
+                        background: 'rgba(250, 247, 242, 0.85)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        boxShadow: '0 0 20px rgba(99,102,241,0.45)',
                     }}>
-                        <img src="/logo.png" alt="RoamGenie" style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
+                        <img src="/logo.png" alt="RoamGenie" style={{ width: '54px', height: '54px', objectFit: 'contain' }} />
                     </div>
                     <span style={{
                         fontFamily: "'Space Grotesk',sans-serif",

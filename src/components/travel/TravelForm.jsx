@@ -70,6 +70,7 @@ const TravelForm = ({ onSubmit, loading }) => {
                             <button
                                 key={val} type="button"
                                 onClick={() => set('tripType', val)}
+                                className={`btn-toggle${form.tripType === val ? ' btn-toggle-active' : ''}`}
                                 style={{
                                     padding: '8px 20px', borderRadius: '12px',
                                     fontWeight: 600, fontSize: '0.88rem', cursor: 'pointer',
@@ -150,6 +151,7 @@ const TravelForm = ({ onSubmit, loading }) => {
                         {[1, 2, 3, 4, 5, 6].map(n => (
                             <button key={n} type="button"
                                 onClick={() => set('passengers', n)}
+                                className={`btn-toggle${form.passengers === n ? ' btn-toggle-active' : ''}`}
                                 style={{
                                     width: '40px', height: '40px', borderRadius: '10px',
                                     fontWeight: 700, fontSize: '0.9rem', cursor: 'pointer',
@@ -175,6 +177,7 @@ const TravelForm = ({ onSubmit, loading }) => {
                         {FLIGHT_CLASSES.map(({ value, label }) => (
                             <button key={value} type="button"
                                 onClick={() => set('flightClass', value)}
+                                className={`btn-toggle${form.flightClass === value ? ' btn-toggle-active' : ''}`}
                                 style={{
                                     padding: '7px 14px', borderRadius: '10px', cursor: 'pointer',
                                     fontFamily: 'inherit', fontWeight: 600, fontSize: '0.82rem',
@@ -200,6 +203,7 @@ const TravelForm = ({ onSubmit, loading }) => {
                         {BUDGET_RANGES.map(({ value, label, icon }) => (
                             <button key={value} type="button"
                                 onClick={() => set('budget', value)}
+                                className={`btn-toggle${form.budget === value ? ' btn-toggle-active' : ''}`}
                                 style={{
                                     padding: '16px', borderRadius: '14px', cursor: 'pointer',
                                     fontFamily: 'inherit', fontWeight: 600, fontSize: '0.9rem',
@@ -231,6 +235,7 @@ const TravelForm = ({ onSubmit, loading }) => {
                             return (
                                 <button key={pref} type="button"
                                     onClick={() => togglePref(pref)}
+                                    className={`btn-toggle${active ? ' btn-toggle-active' : ''}`}
                                     style={{
                                         padding: '7px 14px', borderRadius: '99px', cursor: 'pointer',
                                         fontFamily: 'inherit', fontWeight: 500, fontSize: '0.82rem',

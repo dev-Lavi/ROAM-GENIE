@@ -3,50 +3,50 @@
 
 /* ── Design Tokens — DARK (default) ──────────────────────────────── */
 :root {
-  --font-body:    'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
   --font-display: 'Space Grotesk', system-ui, sans-serif;
 
   /* Brand */
-  --clr-primary:    #6366f1;
+  --clr-primary: #6366f1;
   --clr-primary-lt: #818cf8;
-  --clr-accent:     #8b5cf6;
-  --clr-accent-lt:  #a78bfa;
-  --clr-teal:       #14b8a6;
+  --clr-accent: #8b5cf6;
+  --clr-accent-lt: #a78bfa;
+  --clr-teal: #14b8a6;
 
   /* Surfaces */
-  --clr-bg:         #0a0a14;
-  --clr-surface:    #111122;
-  --clr-surface-2:  #181830;
-  --clr-border:     rgba(99,102,241,0.18);
-  --clr-border-lt:  rgba(129,140,248,0.28);
+  --clr-bg: #0a0a14;
+  --clr-surface: #111122;
+  --clr-surface-2: #181830;
+  --clr-border: rgba(99, 102, 241, 0.18);
+  --clr-border-lt: rgba(129, 140, 248, 0.28);
 
   /* Text */
-  --clr-text:       #e2e8f0;
+  --clr-text: #e2e8f0;
   --clr-text-muted: #94a3b8;
-  --clr-text-dim:   #64748b;
+  --clr-text-dim: #64748b;
 
   /* Card */
-  --clr-card-bg:      rgba(17,17,34,0.75);
-  --clr-card-border:  rgba(99,102,241,0.18);
-  --clr-card-shadow:  0 4px 24px rgba(0,0,0,0.35);
-  --clr-card-glow:    0 0 40px rgba(99,102,241,0.15), 0 4px 24px rgba(0,0,0,0.4);
+  --clr-card-bg: rgba(17, 17, 34, 0.75);
+  --clr-card-border: rgba(99, 102, 241, 0.18);
+  --clr-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  --clr-card-glow: 0 0 40px rgba(99, 102, 241, 0.15), 0 4px 24px rgba(0, 0, 0, 0.4);
 
   /* Nav */
-  --clr-nav-bg:       rgba(10,10,20,0.92);
-  --clr-nav-border:   rgba(99,102,241,0.2);
+  --clr-nav-bg: rgba(10, 10, 20, 0.92);
+  --clr-nav-border: rgba(99, 102, 241, 0.2);
 
   /* Footer */
-  --clr-footer-bg:    rgba(10,10,20,0.95);
-  --clr-footer-border:rgba(99,102,241,0.15);
+  --clr-footer-bg: rgba(10, 10, 20, 0.95);
+  --clr-footer-border: rgba(99, 102, 241, 0.15);
 
   /* Animated bg orbs */
-  --orb-1: rgba(99,102,241,0.12);
-  --orb-2: rgba(139,92,246,0.10);
-  --orb-3: rgba(20,184,166,0.07);
+  --orb-1: rgba(99, 102, 241, 0.12);
+  --orb-2: rgba(139, 92, 246, 0.10);
+  --orb-3: rgba(20, 184, 166, 0.07);
 
   /* Glow */
-  --glow-primary: 0 0 40px rgba(99,102,241,0.25);
-  --glow-accent:  0 0 40px rgba(139,92,246,0.25);
+  --glow-primary: 0 0 40px rgba(99, 102, 241, 0.25);
+  --glow-accent: 0 0 40px rgba(139, 92, 246, 0.25);
 
   /* Radius */
   --r-sm: 8px;
@@ -55,73 +55,88 @@
   --r-xl: 28px;
 
   /* Toggle */
-  --clr-toggle-bg:    rgba(99,102,241,0.12);
-  --clr-toggle-border:rgba(99,102,241,0.3);
-  --clr-toggle-icon:  #818cf8;
+  --clr-toggle-bg: rgba(99, 102, 241, 0.12);
+  --clr-toggle-border: rgba(99, 102, 241, 0.3);
+  --clr-toggle-icon: #818cf8;
 
   /* Scrollbar */
   --clr-scroll-track: #0a0a14;
   --clr-scroll-thumb: #6366f1;
 }
 
-/* ── Design Tokens — LIGHT ───────────────────────────────────────── */
+/* ── Design Tokens — LIGHT (warm cream + orange travel aesthetic) ── */
 :root.light {
-  /* Brand — slightly deeper for contrast on white */
-  --clr-primary:    #4f46e5;
-  --clr-primary-lt: #6366f1;
-  --clr-accent:     #7c3aed;
-  --clr-accent-lt:  #8b5cf6;
-  --clr-teal:       #0d9488;
+  /* Brand — warm orange accent */
+  --clr-primary: #ea580c;
+  --clr-primary-lt: #f97316;
+  --clr-accent: #dc2626;
+  --clr-accent-lt: #ef4444;
+  --clr-teal: #0d9488;
 
-  /* Surfaces */
-  --clr-bg:         #f0f4ff;
-  --clr-surface:    #ffffff;
-  --clr-surface-2:  #e8eeff;
-  --clr-border:     rgba(79,70,229,0.15);
-  --clr-border-lt:  rgba(99,102,241,0.3);
+  /* Surfaces — warm cream base */
+  --clr-bg: #faf7f2;
+  --clr-surface: #ffffff;
+  --clr-surface-2: #f3ece0;
+  --clr-border: rgba(180, 140, 100, 0.2);
+  --clr-border-lt: rgba(234, 88, 12, 0.35);
 
-  /* Text */
-  --clr-text:       #1e1b4b;
-  --clr-text-muted: #4338ca;
-  --clr-text-dim:   #6366f1;
+  /* Text — near-black charcoal */
+  --clr-text: #1a1208;
+  --clr-text-muted: #44311a;
+  --clr-text-dim: #8a6a45;
 
-  /* Card */
-  --clr-card-bg:      rgba(255,255,255,0.92);
-  --clr-card-border:  rgba(79,70,229,0.14);
-  --clr-card-shadow:  0 4px 24px rgba(79,70,229,0.09);
-  --clr-card-glow:    0 0 40px rgba(79,70,229,0.12), 0 4px 24px rgba(79,70,229,0.08);
+  /* Input fields — always white in light mode */
+  --clr-input-bg: #ffffff;
+  --clr-input-border: rgba(180, 140, 100, 0.3);
+  --clr-input-text: #1a1208;
+  --clr-input-placeholder: #a08060;
+  --clr-input-focus: rgba(234, 88, 12, 0.4);
 
-  /* Nav */
-  --clr-nav-bg:       rgba(240,244,255,0.96);
-  --clr-nav-border:   rgba(79,70,229,0.18);
+  /* Card — pure white, warm shadow */
+  --clr-card-bg: rgba(255, 255, 255, 0.97);
+  --clr-card-border: rgba(180, 140, 100, 0.18);
+  --clr-card-shadow: 0 4px 20px rgba(120, 80, 30, 0.10);
+  --clr-card-glow: 0 0 32px rgba(234, 88, 12, 0.10), 0 4px 20px rgba(120, 80, 30, 0.10);
 
-  /* Footer */
-  --clr-footer-bg:    rgba(224,231,255,0.98);
-  --clr-footer-border:rgba(79,70,229,0.15);
+  /* Nav — warm cream glass */
+  --clr-nav-bg: rgba(250, 247, 242, 0.96);
+  --clr-nav-border: rgba(180, 140, 100, 0.2);
 
-  /* Animated bg orbs */
-  --orb-1: rgba(99,102,241,0.07);
-  --orb-2: rgba(139,92,246,0.06);
-  --orb-3: rgba(20,184,166,0.05);
+  /* Footer — slightly toasted */
+  --clr-footer-bg: rgba(243, 236, 224, 0.99);
+  --clr-footer-border: rgba(180, 140, 100, 0.18);
+
+  /* Animated bg orbs — warm amber tones */
+  --orb-1: rgba(234, 88, 12, 0.06);
+  --orb-2: rgba(251, 146, 60, 0.05);
+  --orb-3: rgba(245, 158, 11, 0.04);
 
   /* Glow */
-  --glow-primary: 0 0 30px rgba(79,70,229,0.18);
-  --glow-accent:  0 0 30px rgba(124,58,237,0.15);
+  --glow-primary: 0 0 30px rgba(234, 88, 12, 0.18);
+  --glow-accent: 0 0 30px rgba(220, 38, 38, 0.12);
 
   /* Toggle */
-  --clr-toggle-bg:    rgba(79,70,229,0.10);
-  --clr-toggle-border:rgba(79,70,229,0.25);
-  --clr-toggle-icon:  #4f46e5;
+  --clr-toggle-bg: rgba(234, 88, 12, 0.10);
+  --clr-toggle-border: rgba(234, 88, 12, 0.28);
+  --clr-toggle-icon: #ea580c;
 
   /* Scrollbar */
-  --clr-scroll-track: #e8eeff;
-  --clr-scroll-thumb: #4f46e5;
+  --clr-scroll-track: #f3ece0;
+  --clr-scroll-thumb: #ea580c;
 }
 
 /* ── Reset / Base ─────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: var(--font-body);
@@ -135,16 +150,40 @@ body {
 }
 
 /* ── Scrollbar ────────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--clr-scroll-track); }
-::-webkit-scrollbar-thumb { background: var(--clr-primary); border-radius: 99px; }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--clr-scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--clr-primary);
+  border-radius: 99px;
+}
 
 /* ── Typography ───────────────────────────────────────────────────── */
-h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); line-height: 1.2; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+}
 
 /* ── Links ────────────────────────────────────────────────────────── */
-a { color: var(--clr-primary-lt); text-decoration: none; transition: color 0.2s; }
-a:hover { color: var(--clr-accent-lt); }
+a {
+  color: var(--clr-primary-lt);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--clr-accent-lt);
+}
 
 /* ── Gradient Text Utility ───────────────────────────────────────── */
 .gradient-text {
@@ -163,7 +202,10 @@ a:hover { color: var(--clr-accent-lt); }
   border-radius: var(--r-lg);
   transition: background 0.35s ease, border-color 0.35s ease;
 }
-.glass:hover { border-color: var(--clr-border-lt); }
+
+.glass:hover {
+  border-color: var(--clr-border-lt);
+}
 
 /* ── Animated Gradient Background ────────────────────────────────── */
 .animated-bg {
@@ -172,9 +214,11 @@ a:hover { color: var(--clr-accent-lt); }
   overflow: hidden;
   transition: background 0.35s ease;
 }
+
 .animated-bg::before {
   content: '';
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
   background:
     radial-gradient(ellipse 80% 60% at 20% 20%, var(--orb-1) 0%, transparent 60%),
     radial-gradient(ellipse 60% 80% at 80% 80%, var(--orb-2) 0%, transparent 60%),
@@ -183,40 +227,99 @@ a:hover { color: var(--clr-accent-lt); }
   z-index: 0;
   transition: background 0.35s ease;
 }
-.animated-bg > * { position: relative; z-index: 1; }
+
+.animated-bg>* {
+  position: relative;
+  z-index: 1;
+}
 
 /* ── Loader Pulse ─────────────────────────────────────────────────── */
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes pulse-ring {
-  0%   { transform: scale(0.8); opacity: 1; }
-  100% { transform: scale(2.0); opacity: 0; }
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2.0);
+    opacity: 0;
+  }
 }
+
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
+
 @keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
+
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* Theme toggle slide animation */
 @keyframes toggleSlide {
-  0%   { transform: scale(0.7) rotate(-30deg); opacity: 0; }
-  100% { transform: scale(1) rotate(0deg);     opacity: 1; }
+  0% {
+    transform: scale(0.7) rotate(-30deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 
-.animate-fadeInUp { animation: fadeInUp 0.5s ease forwards; }
-.animate-fadeIn   { animation: fadeIn   0.4s ease forwards; }
-.animate-float    { animation: float    3s ease-in-out infinite; }
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
 
 /* ── Skeleton shimmer ─────────────────────────────────────────────── */
 .skeleton {
@@ -228,33 +331,154 @@ a:hover { color: var(--clr-accent-lt); }
 
 /* ── Theme toggle button ──────────────────────────────────────────── */
 .theme-toggle {
-  width: 40px; height: 40px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
   background: var(--clr-toggle-bg);
   border: 1px solid var(--clr-toggle-border);
   color: var(--clr-toggle-icon);
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
   flex-shrink: 0;
 }
+
 .theme-toggle:hover {
   transform: scale(1.1);
   background: var(--clr-toggle-border);
 }
+
 .theme-toggle svg {
   animation: toggleSlide 0.3s ease;
 }
 
-/* ── Light-mode overrides for Markdown content ───────────────────── */
+/* ── Light-mode: Markdown content ────────────────────────────────── */
 :root.light .itinerary-md h1,
-:root.light .itinerary-md h2 { color: #4f46e5; border-bottom-color: rgba(79,70,229,0.15); }
-:root.light .itinerary-md h3  { color: #6366f1; }
-:root.light .itinerary-md p, :root.light .itinerary-md li { color: #374151; }
-:root.light .itinerary-md strong { color: #1e1b4b; }
-:root.light .itinerary-md em   { color: #6366f1; }
+:root.light .itinerary-md h2 {
+  color: #ea580c;
+  border-bottom-color: rgba(234, 88, 12, 0.15);
+}
+
+:root.light .itinerary-md h3 {
+  color: #c2410c;
+}
+
+:root.light .itinerary-md p,
+:root.light .itinerary-md li {
+  color: #44311a;
+}
+
+:root.light .itinerary-md strong {
+  color: #1a1208;
+}
+
+:root.light .itinerary-md em {
+  color: #8a6a45;
+}
+
 :root.light .hotel-md h1,
 :root.light .hotel-md h2,
-:root.light .hotel-md h3 { color: #0d9488; }
-:root.light .hotel-md p  { color: #374151; }
-:root.light .hotel-md strong { color: #1e1b4b; }
+:root.light .hotel-md h3 {
+  color: #0d9488;
+}
+
+:root.light .hotel-md p {
+  color: #44311a;
+}
+
+:root.light .hotel-md strong {
+  color: #1a1208;
+}
+
+/* ── Light-mode: ALL input / textarea / select ────────────────────── */
+/* These override any inline dark styles set by page components */
+:root.light input,
+:root.light textarea,
+:root.light select {
+  background: var(--clr-input-bg) !important;
+  border-color: var(--clr-input-border) !important;
+  color: var(--clr-input-text) !important;
+}
+
+:root.light input::placeholder,
+:root.light textarea::placeholder {
+  color: var(--clr-input-placeholder) !important;
+  opacity: 1;
+}
+
+:root.light input:focus,
+:root.light textarea:focus,
+:root.light select:focus {
+  border-color: var(--clr-input-focus) !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.10) !important;
+}
+
+/* ── Light-mode: details/summary element ─────────────────────────── */
+:root.light details summary {
+  background: rgba(255, 255, 255, 0.8) !important;
+  color: var(--clr-text-dim) !important;
+}
+
+:root.light details>div {
+  background: rgba(250, 247, 242, 0.95) !important;
+  color: var(--clr-text-muted) !important;
+}
+
+/* ── Light-mode: Stats bar ────────────────────────────────────────── */
+:root.light .stats-bar {
+  background: rgba(234, 88, 12, 0.08) !important;
+  border-color: rgba(234, 88, 12, 0.18) !important;
+}
+
+:root.light .stats-tile {
+  background: rgba(255, 255, 255, 0.92) !important;
+}
+
+:root.light .stats-val {
+  color: #ea580c !important;
+}
+
+:root.light .stats-label {
+  color: #8a6a45 !important;
+}
+
+/* ── Light-mode: Toggle buttons (inactive) ────────────────────────── */
+:root.light .btn-toggle {
+  background: rgba(234, 88, 12, 0.07) !important;
+  color: #8a6a45 !important;
+  border: 1px solid rgba(234, 88, 12, 0.2) !important;
+  box-shadow: none !important;
+}
+
+:root.light .btn-toggle:hover {
+  background: rgba(234, 88, 12, 0.14) !important;
+  color: #ea580c !important;
+  border-color: rgba(234, 88, 12, 0.35) !important;
+}
+
+/* ── Light-mode: Toggle buttons (active/selected) ─────────────────── */
+:root.light .btn-toggle-active {
+  background: linear-gradient(135deg, #ea580c, #f97316) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 4px 18px rgba(234, 88, 12, 0.35) !important;
+}
+
+/* ── Light-mode: date input colorScheme ───────────────────────────── */
+:root.light input[type="date"],
+:root.light input[type="time"] {
+  color-scheme: light !important;
+}
+
+/* ── Light-mode: form labels ──────────────────────────────────────── */
+:root.light label {
+  color: var(--clr-text-muted) !important;
+}
+
+/* ── Light-mode: form section headings (uppercase labels) ─────────── */
+:root.light label[style*="uppercase"] {
+  color: #8a6a45 !important;
+}

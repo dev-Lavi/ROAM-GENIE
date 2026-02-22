@@ -92,7 +92,7 @@ const Hero = () => (
 
 /* ─── Stats strip ────────────────────────── */
 const Stats = () => (
-    <div style={{
+    <div className="stats-bar" style={{
         display: 'flex', flexWrap: 'wrap', gap: '1px',
         background: 'rgba(99,102,241,0.1)',
         borderRadius: '16px', overflow: 'hidden',
@@ -105,12 +105,12 @@ const Stats = () => (
             ['4.9★', 'User Rating'],
             ['< 10s', 'Avg. Plan Time'],
         ].map(([val, label]) => (
-            <div key={label} style={{
+            <div key={label} className="stats-tile" style={{
                 flex: 1, minWidth: '120px', textAlign: 'center', padding: '20px 16px',
                 background: 'rgba(10,10,20,0.8)',
             }}>
-                <p style={{ color: '#818cf8', fontWeight: 800, fontSize: '1.4rem', margin: 0, fontFamily: "'Space Grotesk',sans-serif" }}>{val}</p>
-                <p style={{ color: '#475569', fontSize: '0.78rem', margin: '4px 0 0', fontWeight: 500 }}>{label}</p>
+                <p className="stats-val" style={{ color: '#818cf8', fontWeight: 800, fontSize: '1.4rem', margin: 0, fontFamily: "'Space Grotesk',sans-serif" }}>{val}</p>
+                <p className="stats-label" style={{ color: '#475569', fontSize: '0.78rem', margin: '4px 0 0', fontWeight: 500 }}>{label}</p>
             </div>
         ))}
     </div>

@@ -21,11 +21,10 @@ const Footer = () => (
                 <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
                         <div style={{
-                            width: '36px', height: '36px', borderRadius: '10px',
-                            background: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
+                            width: '54px', height: '54px', borderRadius: '10px',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                         }}>
-                            <img src="/logo.png" alt="RoamGenie" style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
+                            <img src="/logo.png" alt="RoamGenie" style={{ width: '54px', height: '54px', objectFit: 'contain' }} />
                         </div>
                         <span style={{
                             fontFamily: "'Space Grotesk',sans-serif",
