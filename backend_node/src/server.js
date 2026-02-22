@@ -30,7 +30,7 @@ app.use(helmet());
 const ALLOWED_ORIGINS = [
   'http://localhost:5173',
   'http://localhost:4173',  // Vite preview
-  'http://localhost:3000',
+  'https://roam-genie.vercel.app',
 ];
 app.use(cors({
   origin: (origin, cb) => {
